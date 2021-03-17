@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Handwritten</title>
+  <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/uikit.min.css" />
+  <link rel="manifest" href="manifest.json">
+  <script src="./assets/js/uikit.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <nav class="uk-navbar-container" uk-navbar="mode: click">
+      <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="#">Handwritten</a>
+      </div>
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+          <li><a href="#setting" uk-icon="icon: cog" uk-toggle></a></li>
+          <li>
+            <a href="#" uk-icon="icon: download"></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li class="uk-active">Тип файла</li>
+                <li class="uk-nav-divider"></li>
+                <li><a id="save_pdf" class="align" href="#"><span uk-icon="file-pdf"></span>&nbsp; PDF</a></li>
+                <li><a id="save_png" class="align" href="#"><span uk-icon="image"></span>&nbsp; PNG</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="full">
+      <div uk-spinner="ratio: 3"></div>
+    </div>
+    <div id="editor">
+      <p>Добро пожаловать</p>
+    </div>
+    <button id="convert" class="uk-button uk-button-primary">
+      КОНВЕРТИРОВАТЬ
+    </button>
+    <div id="generate_dom">
+      <div class="column" style="display: none; vertical-align: top; width: 682px; height: 1114px; float: left;"></div>
+    </div>
+
+    <div id="generate_img" uk-lightbox="animation: slide"></div>
+    <section class="modals">
+      <div id="setting" class="uk-modal-full" uk-modal>
+        <div class="uk-modal-dialog">
+          <button id="setting_close" class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+          <div class="uk-background-cover uk-flex-middle uk-grid-collapse" uk-height-viewport uk-grid>
+            <div class="uk-padding-large">
+              <form class="form">
+                <div class="uk-margin uk-width-1-1">
+                  <label class="uk-form-label" for="font-select">Выбирайте шрифт</label>
+                  <div class="uk-form-controls">
+                    <select class="uk-select" id="font-select">
+                      <option style="font-size: x-large; font-family:Eskal;">Eskal</option>
+                      <option style="font-size: x-large; font-family:Anselmo;">Anselmo</option>
+                      <option style="font-size: x-large; font-family:Benvolio;">Benvolio</option>
+                      <option style="font-size: x-large; font-family:Capuletty;">Capuletty</option>
+                      <option style="font-size: x-large; font-family:Abram ;">Abram</option>
+                      <option style="font-size: x-large; font-family:Gregory;">Gregory</option>
+                      <option style="font-size: x-large; font-family:Lexa;">Lexa</option>
+                      <option style="font-size: x-large; font-family:Lorenco;">Lorenco</option>
+                      <option style="font-size: x-large; font-family:Merk;">Merk</option>
+                      <option style="font-size: x-large; font-family:Montekky;">Montekky</option>
+                      <option style="font-size: x-large; font-family:Pag;">Pag</option>
+                      <option style="font-size: x-large; font-family:Paris;">Paris</option>
+                      <option style="font-size: x-large; font-family:Salavat;">Salavat</option>
+                      <option style="font-size: x-large; font-family:shriftone;">Shriftone</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="uk-margin uk-width-1-1">
+                  <label class="uk-form-label" for="font-size-select">Выбирайте размер шрифта</label>
+                  <div class="uk-form-controls">
+                    <select class="uk-select" id="font-size-select">
+                      <option value="2em">Нормальный</option>
+                      <option value="2.5em">Большой</option>
+                      <option value="3em">Огромный</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="uk-margin uk-width-1-1">
+                  <label class="uk-form-label" for="page-select">Выбирайте фон</label>
+                  <div class="uk-form-controls">
+                    <select class="uk-select" id="page-select">
+                      <option value="grid">Клеточный лист</option>
+                      <option value="line">Линейный лист</option>
+                      <option value="papper">Белый лист</option>
+                    </select>
+                  </div>
+                </div>
+                <button id="setting_btn" class="uk-button uk-button-primary" type="button">
+                  Сохранить
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="page_size">
+    <div class="line_size"></div>
+    <div class="grid_size"></div>
+    <div class="papper_size"></div>
+  </div>
+  <script src="./assets/js/main.min.js"></script>
+</body>
+
+</html>
