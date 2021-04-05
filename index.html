@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Handwritten</title>
   <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
-  <link rel="stylesheet" href="./assets/css/uikit.min.css" />
-  <link rel="manifest" href="manifest.json">
-  <script src="./assets/js/uikit.min.js"></script>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="./assets/js/header.min.js"></script>
 </head>
 
 <body>
@@ -20,15 +20,28 @@
       </div>
       <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-          <li><a href="#setting" uk-icon="icon: cog" uk-toggle></a></li>
+          <li id="user_btn">
+            <a href="#"><i class="fal fa-lg fa-user"></i></a>
+            <div class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li><a href="#register" uk-toggle><i class="fal fa-lg fa-user-plus"></i>&nbsp; Зарегистрироваться</a>
+                </li>
+                <li class="uk-nav-divider"></li>
+                <li><a href="#sign_in" uk-toggle><i class="fal fa-lg fa-sign-in"></i>&nbsp;&nbsp;&nbsp;Войти</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li id="set_btn"><a href="#setting" uk-toggle><i class="fal fa-lg fa-cog"></i></a></li>
+
           <li>
-            <a href="#" uk-icon="icon: download"></a>
+            <a href="#"><i class="fal fa-lg fa-arrow-to-bottom"></i></a>
             <div class="uk-navbar-dropdown">
               <ul class="uk-nav uk-navbar-dropdown-nav">
                 <li class="uk-active">Тип файла</li>
                 <li class="uk-nav-divider"></li>
-                <li><a id="save_pdf" class="align" href="#"><span uk-icon="file-pdf"></span>&nbsp; PDF</a></li>
-                <li><a id="save_png" class="align" href="#"><span uk-icon="image"></span>&nbsp; PNG</a></li>
+                <li><a id="save_pdf" href="#"><i class="fal fa-lg fa-file-pdf"></i>&nbsp; PDF</a></li>
+                <li><a id="save_png" href="#"><i class="fal fa-lg fa-file-image"></i>&nbsp; PNG</a></li>
               </ul>
             </div>
           </li>
@@ -40,7 +53,9 @@
       <div uk-spinner="ratio: 3"></div>
     </div>
     <div id="editor">
-      <p>Добро пожаловать</p>
+      <p>Добро пожаловать.</p>
+      <p>Вам даётся 4 бесплатных страниц.</p>
+      <p>Чтобы конвертировать больше 4 страниц вы должны <strong>зарегистрироваться.</strong></p>
     </div>
     <button id="convert" class="uk-button uk-button-primary">
       КОНВЕРТИРОВАТЬ
@@ -51,6 +66,120 @@
 
     <div id="generate_img" uk-lightbox="animation: slide"></div>
     <section class="modals">
+
+      <div id="register" class="uk-modal-full" uk-modal>
+        <div class="uk-modal-dialog">
+          <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+          <div class="uk-background-cover uk-flex-middle uk-grid-collapse" uk-height-viewport uk-grid>
+            <div class="uk-padding-large">
+              <form class="form" id="register_form">
+                <div class="uk-margin uk-width-1-1">
+                  <div class="uk-inline width">
+                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                    <label class="uk-form-label error-label" for="register_email"></label>
+                    <input id="register_email" class="uk-input" name="register_email" type="text" required minlength="4"
+                      maxlength="100" size="100" placeholder="Электронная почта" />
+                  </div>
+                </div>
+                <div class="uk-margin uk-width-1-1">
+                  <div class="uk-inline width">
+                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                    <label class="uk-form-label error-label" for="register_password"></label>
+                    <input id="register_password" class="uk-input" name="register_password" type="password" required
+                      minlength="6" maxlength="100" size="100" placeholder="Пароль" />
+                  </div>
+                </div>
+                <div class="uk-margin uk-width-1-1">
+                  <div class="uk-inline width">
+                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                    <label class="uk-form-label error-label" for="register_password_confirm"></label>
+                    <input id="register_password_confirm" class="uk-input" name="register_password_confirm"
+                      type="password" required minlength="6" maxlength="100" size="100" placeholder="Пароль" />
+                  </div>
+                </div>
+                <button id="register_btn" name="register_btn" class="uk-button uk-button-primary" type="submit"
+                  disabled>
+                  Зарегистрироваться
+                </button>
+                <span class="uk-form-label" style="margin-top: 20px">Уже зарегистрировались? <a href="#sign_in"
+                    uk-toggle>Войдите</a>
+                </span>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="sign_in" class="uk-modal-full" uk-modal>
+        <div class="uk-modal-dialog">
+          <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+          <div class="uk-background-cover uk-flex-middle uk-grid-collapse" uk-height-viewport uk-grid>
+            <div class="uk-padding-large">
+              <form class="form" id="sign_in_form" style="justify-content: space-between !important">
+                <div class="uk-margin uk-width-1-1">
+                  <div class="uk-inline width">
+                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                    <label class="uk-form-label error-label" for="sign_in_email"></label>
+                    <input id="sign_in_email" name="sign_in_email" class="uk-input" type="text" required minlength="4"
+                      maxlength="100" size="100" placeholder="Электронная почта" />
+                  </div>
+                </div>
+
+                <div class="uk-margin uk-width-1-1">
+                  <div class="uk-inline width">
+                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                    <label class="uk-form-label error-label" for="sign_in_password"></label>
+                    <input id="sign_in_password" name="sign_in_password" class="uk-input" type="password" required
+                      minlength="6" maxlength="100" size="100" placeholder="Пароль" />
+                  </div>
+                </div>
+                <button id="sign_in_btn" name="sign_in_btn" class="uk-button uk-button-primary" type="submit" disabled>
+                  Войти
+                </button>
+                <span class="uk-form-label" style="margin-top: 20px">Нет аккаунта?<a href="#register" uk-toggle>
+                    Зарегистрируйтесь</a>
+                </span>
+                <span class="uk-form-label" style="margin-top: 20px"><a href="#forgot_password" uk-toggle>
+                    Забыли пароль?</a></span>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="forgot_password" class="uk-modal-full uk-modal" uk-modal="">
+        <div class="uk-modal-dialog">
+          <button class="uk-modal-close-full uk-close-large uk-icon uk-close" type="button" uk-close=""></button>
+          <div class="uk-background-cover uk-flex-middle uk-grid-collapse uk-grid uk-grid-stack" uk-height-viewport=""
+            uk-grid="">
+            <div class="uk-padding-large">
+              <form class="form" id="forgot_password_form">
+                <div class="uk-margin uk-width-1-1">
+                  <div class="uk-inline width">
+                    <span class="uk-form-icon uk-icon" uk-icon="icon: mail"><svg width="20" height="20"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="mail">
+                        <polyline fill="none" stroke="#000" points="1.4,6.5 10,11 18.6,6.5"></polyline>
+                        <path d="M 1,4 1,16 19,16 19,4 1,4 Z M 18,15 2,15 2,5 18,5 18,15 Z"></path>
+                      </svg></span>
+                    <label class="uk-form-label error-label" for="forgot_password_email"></label>
+                    <input id="forgot_password_email" name="forgot_password_email" class="uk-input" type="text"
+                      required="" minlength="4" maxlength="100" size="100" placeholder="Ваша электронная почта">
+                  </div>
+                </div>
+                <button id="forgot_password_btn" name="forgot_password_btn" class="uk-button uk-button-primary"
+                  type="submit">
+                  Подтвердить
+                </button>
+                <a id="forgot_password_true" style="display: none;" href="#new_password" uk-toggle=""></a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
       <div id="setting" class="uk-modal-full" uk-modal>
         <div class="uk-modal-dialog">
           <button id="setting_close" class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
@@ -101,11 +230,15 @@
                 <button id="setting_btn" class="uk-button uk-button-primary" type="button">
                   Сохранить
                 </button>
+                <button id="sign_out" class="uk-button uk-button-danger" type="button">
+                  Выйти из аккаунта
+                </button>
               </form>
             </div>
           </div>
         </div>
       </div>
+
     </section>
   </div>
   <div id="page_size">
@@ -113,6 +246,8 @@
     <div class="grid_size"></div>
     <div class="papper_size"></div>
   </div>
+  <script src="./assets/js/firebase.min.js"></script>
+  <script src="./assets/js/script.min.js"></script>
   <script src="./assets/js/main.min.js"></script>
 </body>
 

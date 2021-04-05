@@ -1,8 +1,8 @@
-const cacheName = "v-app-v1";
-const dinamicCacheName = "d-app-v1";
-const assetUrls = [
+const cacheName = "app-v1";
+const staticAssets = [
   "/",
-  "./assets/css/uikit.min.css",
+  "./assets/css/style.css",
+  "./assets/fonts/fa-light-300.ttf",
   "./assets/fonts/Abram.ttf",
   "./assets/fonts/Anselmo.ttf",
   "./assets/fonts/Benvolio.ttf",
@@ -27,22 +27,23 @@ const assetUrls = [
   "./assets/img/Page1_line.png",
   "./assets/img/Page2_line.png",
   "./assets/js/main.min.js",
-  "./assets/js/uikit.min.js",
+  "./assets/js/header.min.js",
+  "./assets/js/script.min.js",
+  "./assets/js/firebase.min.js",
   "./index.html",
   "./offline.html",
 ];
 
-self.addEventListener("install", async (event) => {
+self.addEventListener("install", async () => {
   const cache = await caches.open(cacheName);
-  await cache.addAll(assetUrls);
+  await cache.addAll(staticAssets);
 });
 
-self.addEventListener("activate", async (event) => {
+self.addEventListener("activate", async () => {
   const cacheNames = await caches.keys();
   await Promise.all(
     cacheNames
       .filter((name) => name !== cacheName)
-      .filter((name) => name !== dinamicCacheName)
       .map((name) => caches.delete(name))
   );
 });
@@ -50,25 +51,17 @@ self.addEventListener("activate", async (event) => {
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
+  if (event.request.mode === "navigate") {
+    return event.respondWith(
+      fetch(event.request).catch(() => caches.match("./offline.html"))
+    );
+  }
   if (url.origin === location.origin) {
     event.respondWith(chacheFirst(request));
-  } else {
-    event.respondWith(networkFirst(request));
   }
 });
 
 async function chacheFirst(request) {
   const cached = await caches.match(request);
   return cached ?? (await fetch(request));
-}
-
-async function networkFirst(request) {
-  const cache = await caches.open(dinamicCacheName);
-  try {
-    const response = await fetch(request);
-    await cache.put(request, response.clone());
-    return response;
-  } catch (error) {
-    return caches.match("./offline.html");
-  }
 }
