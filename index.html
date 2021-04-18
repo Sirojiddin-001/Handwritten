@@ -27,6 +27,28 @@
       </div>
       <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
+        	<li id="file_select">
+        		<a href="#" ><i class="fal fa-lg fa-file-import"></i></a>
+              <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                  <li class="uk-active">Импортировать файл</li>
+                  <li class="uk-nav-divider"></li>
+                  <li>
+                    <a href="#" uk-form-custom>
+                      <i class="fal fa-lg fa-file-word"></i>
+                     &nbsp; DOCX
+                      <input id="parse-docx" accept=".docx" type="file" required>
+                  </a>
+                  </li>
+                  <li>
+                    <a href="#" uk-form-custom>
+                      <i class="fal fa-lg fa-file-alt"></i> 
+                     &nbsp; TXT
+                    <input id="parse-txt" accept=".txt" type="file" required></a>
+                  </li>
+                </ul>
+              </div>
+        	</li>
           <li id="user_btn">
             <a href="#"><i class="fal fa-lg fa-user"></i></a>
             <div class="uk-navbar-dropdown">
@@ -34,7 +56,7 @@
                 <li><a href="#register" uk-toggle><i class="fal fa-lg fa-user-plus"></i>&nbsp; Зарегистрироваться</a>
                 </li>
                 <li class="uk-nav-divider"></li>
-                <li><a href="#sign_in" uk-toggle><i class="fal fa-lg fa-sign-in"></i>&nbsp;&nbsp;&nbsp;Войти</a></li>
+                <li><a id="sign_in_nav" href="#sign_in" uk-toggle><i class="fal fa-lg fa-sign-in"></i>&nbsp;&nbsp;&nbsp;Войти</a></li>
               </ul>
             </div>
           </li>
@@ -253,6 +275,7 @@
     <div class="grid_size"></div>
     <div class="papper_size"></div>
   </div>
+  <script src="./assets/js/mammoth.min.js"></script>
   <script src="./assets/js/firebase.min.js"></script>
   <script src="./assets/js/script.min.js"></script>
   <script src="./assets/js/main.min.js"></script>

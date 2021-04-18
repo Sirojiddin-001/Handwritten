@@ -1,4 +1,4 @@
-const cacheName = "app-v1";
+const cacheName = "app-v1.1";
 const staticAssets = [
   "/",
   "./assets/css/style.css",
@@ -30,6 +30,7 @@ const staticAssets = [
   "./assets/js/header.min.js",
   "./assets/js/script.min.js",
   "./assets/js/firebase.min.js",
+  "./assets/js/mammoth.min.js",
   "./index.html",
   "./offline.html",
 ];
