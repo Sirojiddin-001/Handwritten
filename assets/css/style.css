@@ -23342,3 +23342,7 @@ li.ql-indent-9.ql-direction-rtl.ql-align-right {
     position: static;
     width: auto;
 }
+
+#file_select{
+  display: none;
+}
