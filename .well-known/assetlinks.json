@@ -1,0 +1,5 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "ml.handwritten.twa",
+                   "sha256_cert_fingerprints": ["4A:78:0E:CE:43:50:19:C4:2F:ED:7C:D7:B0:74:12:F6:9F:AC:1F:A1:0A:E5:E2:AE:31:0C:76:80:6E:98:51:FC"] }
+    }]
